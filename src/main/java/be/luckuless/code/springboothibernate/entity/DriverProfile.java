@@ -17,6 +17,6 @@ public class DriverProfile {
     private boolean gearboxManual;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "driver_passport_number", referencedColumnName = "passportNo")
+    @JoinColumn(name = "passport_no", referencedColumnName = "passport_no")
     private Driver driver;
 }
