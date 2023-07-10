@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS Driver;
-CREATE TABLE Driver (
+CREATE TABLE IF NOT EXISTS Driver (
     passport_no VARCHAR(50) UNIQUE,
     fname VARCHAR(50) NOT NULL,
     lname VARCHAR(50) NOT NULL,
@@ -7,8 +6,7 @@ CREATE TABLE Driver (
     primary key (passport_no)
 );
 
-DROP TABLE IF EXISTS Driver_Profile;
-CREATE TABLE Driver_Profile (
+CREATE TABLE IF NOT EXISTS Driver_Profile (
     id INT AUTO_INCREMENT NOT NULL,
     passport_no VARCHAR(50) UNIQUE NOT NULL,
     sunroof BOOLEAN NOT NULL,
@@ -18,8 +16,7 @@ CREATE TABLE Driver_Profile (
 );
 
 
-DROP TABLE IF EXISTS Car;
-CREATE TABLE Car (
+CREATE TABLE IF NOT EXISTS Car (
     ref VARCHAR(50),
     vin INT UNIQUE NOT NULL,
     type VARCHAR(50) NOT NULL,
@@ -31,8 +28,7 @@ CREATE TABLE Car (
     primary key (ref)
 );
 
-DROP TABLE IF EXISTS Wheel;
-CREATE TABLE Wheel (
+CREATE TABLE If NOT EXISTS Wheel (
     ref VARCHAR(50) NOT NULL,
     model VARCHAR(50) NOT NULL,
     type VARCHAR(50) NOT NULL,
@@ -41,8 +37,7 @@ CREATE TABLE Wheel (
     primary key (ref)
 );
 
-DROP TABLE IF EXISTS Car_Wheel;
-CREATE TABLE Car_Wheel (
+CREATE TABLE IF NOT EXISTS Car_Wheel (
     car_ref VARCHAR(50) NOT NULL,
     wheel_ref VARCHAR(50) NOT NULL,
     amount INT NOT NULL,

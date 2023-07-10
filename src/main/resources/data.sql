@@ -4,9 +4,9 @@ insert into Driver values
     ('bePass03', 'jean', 'claude', 'ixelles');
 
 insert into Driver_Profile values
-    (1, 'muPass01', true, true),
-    (2, 'muPass02', false, false),
-    (3, 'bePass03', true, true);
+    (1, true, true, 'muPass01'),
+    (2, false, false, 'muPass02'),
+    (3, true, true, 'bePass03');
 
 insert into Car values
     ( 'suvBmwX51', 123450, 'SUV', 'BMW', 'X5', 'Diesel/Electric', 'muPass01'),
