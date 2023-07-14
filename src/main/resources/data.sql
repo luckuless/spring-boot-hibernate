@@ -17,7 +17,7 @@ insert into Car ("REF", "VIN", "TYPE", "MODEL", "TRIM", "FUEL_TYPE", "DRIVER") v
     ( 'crossVolkTiguan2', 123455, 'CROSSOVER', 'Volkswagen', 'Tiguan', 'Diesel', NULL),
     ( '4x4NissanNavara1', 123456, '4X4', 'Nissan', 'Navara', 'Diesel', NULL);
 
-insert into Wheel values
+insert into Wheel("REF", "MODEL", "TYPE", "SIZE", "PRICE") values
     ( 'bmTubeless16', 'BM', 'tubeless', 16, 500 ),
     ( 'bmTubeless17', 'BM', 'tubeless', 17, 600 ),
     ( 'toyoThreaded18', 'Toyo', 'threaded', 18, 500 ),
