@@ -8,7 +8,7 @@ insert into Driver_Profile values
     (2, false, false, 'muPass02'),
     (3, true, true, 'bePass03');
 
-insert into Car values
+insert into Car ("REF", "VIN", "TYPE", "MODEL", "TRIM", "FUEL_TYPE", "DRIVER") values
     ( 'suvBmwX51', 123450, 'SUV', 'BMW', 'X5', 'Diesel/Electric', 'muPass01'),
     ( 'sedanToyotaCorolla1', 123451, 'SEDAN', 'Toyota', 'Corolla', 'Petrol', 'muPass01'),
     ( 'sedanHondaCivic1', 123452, 'Sedan', 'Honda', 'Civic', 'Petrol/Electric', 'muPass02'),

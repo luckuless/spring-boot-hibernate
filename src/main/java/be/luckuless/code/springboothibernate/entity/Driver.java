@@ -5,7 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -19,4 +21,7 @@ public class Driver {
 
     @OneToOne(mappedBy = "driver")
     private DriverProfile driverProfile;
+//
+    @OneToMany(mappedBy = "driver")
+    private Set<Car> cars;
 }
