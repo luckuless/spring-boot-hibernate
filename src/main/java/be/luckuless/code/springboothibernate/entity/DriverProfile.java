@@ -19,4 +19,12 @@ public class DriverProfile {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "passport_no", referencedColumnName = "passportNo")
     private Driver driver;
+
+    @Override
+    public String toString() {
+        return "DriverProfile{" +
+                "sunroof=" + sunroof +
+                ", gearboxManual=" + gearboxManual +
+                '}';
+    }
 }

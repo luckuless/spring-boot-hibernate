@@ -3,11 +3,10 @@ package be.luckuless.code.springboothibernate.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -21,7 +20,27 @@ public class Driver {
 
     @OneToOne(mappedBy = "driver")
     private DriverProfile driverProfile;
-//
-    @OneToMany(mappedBy = "driver")
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "driver", cascade = CascadeType.ALL)
     private Set<Car> cars;
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "passportNo='" + passportNo + '\'' +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", address='" + address + '\'' +
+                ", driverProfile=" + driverProfile +
+                ", cars" + carsToString(cars) +
+                '}';
+    }
+
+    private String carsToString(Set<Car> cars) {
+
+        List<String> carsList = cars.stream().map(car -> car.toStringExcludeDriver()).collect(Collectors.toList());
+
+        return carsList.toString();
+    }
+
 }

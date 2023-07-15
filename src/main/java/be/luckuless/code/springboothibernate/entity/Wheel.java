@@ -22,4 +22,15 @@ public class Wheel {
 
     @OneToMany(mappedBy = "wheel")
     Set<CarWheel> cars;
+
+    @Override
+    public String toString() {
+        return "Wheel{" +
+                "ref='" + ref + '\'' +
+                ", model='" + model + '\'' +
+                ", type='" + type + '\'' +
+                ", size=" + size +
+                ", price=" + price +
+                '}';
+    }
 }

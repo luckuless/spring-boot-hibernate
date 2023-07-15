@@ -26,4 +26,28 @@ public class Car {
     @OneToMany(mappedBy = "car")
     Set<CarWheel> wheels;
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "ref='" + ref + '\'' +
+                ", vin=" + vin +
+                ", type='" + type + '\'' +
+                ", model='" + model + '\'' +
+                ", trim='" + trim + '\'' +
+                ", fuelType='" + fuelType + '\'' +
+                ", driver=" + driver +
+                '}';
+    }
+
+    public String toStringExcludeDriver() {
+        return "Car{" +
+                "ref='" + ref + '\'' +
+                ", vin=" + vin +
+                ", type='" + type + '\'' +
+                ", model='" + model + '\'' +
+                ", trim='" + trim + '\'' +
+                ", fuelType='" + fuelType + '\'' +
+                '}';
+    }
+
 }
