@@ -1,8 +1,12 @@
 package be.luckuless.code.springboothibernate.entity;
 
+
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
 public class CarWheel {
 
     @EmbeddedId

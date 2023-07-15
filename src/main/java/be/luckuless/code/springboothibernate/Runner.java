@@ -1,21 +1,20 @@
 package be.luckuless.code.springboothibernate;
 
 import be.luckuless.code.springboothibernate.entity.Car;
+import be.luckuless.code.springboothibernate.entity.CarWheel;
 import be.luckuless.code.springboothibernate.entity.Driver;
 import be.luckuless.code.springboothibernate.entity.Wheel;
 import be.luckuless.code.springboothibernate.repository.CarRepository;
+import be.luckuless.code.springboothibernate.repository.CarWheelRepository;
 import be.luckuless.code.springboothibernate.repository.DriverRepository;
 import be.luckuless.code.springboothibernate.repository.WheelRepository;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class Runner implements CommandLineRunner {
@@ -27,17 +26,19 @@ public class Runner implements CommandLineRunner {
 
     private WheelRepository wheelRepository;
 
-    public Runner(CarRepository carRepository, DriverRepository driverRepository, WheelRepository wheelRepository) {
+    private CarWheelRepository carWheelRepository;
+
+    public Runner(CarRepository carRepository, DriverRepository driverRepository, WheelRepository wheelRepository, CarWheelRepository carWheelRepository) {
         this.carRepository = carRepository;
         this.driverRepository = driverRepository;
         this.wheelRepository = wheelRepository;
+        this.carWheelRepository = carWheelRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
-
-
-        basicRepository();
+//        basicRepository();
+        complexRepository();
     }
 
     private void basicRepository() {
@@ -59,4 +60,41 @@ public class Runner implements CommandLineRunner {
         logger.info("Number of different Wheels: "+String.valueOf(wheels.size()));
 
     }
+
+    private void complexRepository() {
+        findWheelsUsedByCarRef("4x4NissanNavara1");
+        findTotalWheelPriceByCarRef("4x4NissanNavara1");
+    }
+
+    private Optional<Car> findCarsByRef(String ref) {
+        return carRepository.findCarsByRef(ref);
+
+    }
+
+
+
+    private void findWheelsUsedByCarRef(String ref) {
+        Optional<Car> car = findCarsByRef(ref);
+        if(car.isPresent()) {
+            List<CarWheel> wheelsByCar = carWheelRepository.findCarWheelsByCar(car.get());
+            logger.info("number of different wheels used by "+ref+": " + wheelsByCar.size());
+            wheelsByCar.forEach(z -> logger.info("Wheel:" +z.getWheel().getRef() + " - Price: "+ z.getWheel().getPrice() + " - Number of wheels used: " + z.getAmount()));
+        }
+    }
+
+    private void findTotalWheelPriceByCarRef(String ref) {
+        Optional<Car> car = findCarsByRef(ref);
+        if(car.isPresent()) {
+            List<CarWheel> wheelsByCar = carWheelRepository.findCarWheelsByCar(car.get());
+
+            Integer totalPrice = wheelsByCar.stream()
+                    .map(wheelByCar -> wheelByCar.getWheel().getPrice() * wheelByCar.getAmount())
+                            .reduce(0, Integer::sum);
+
+            logger.info("Total Wheel Price for car "+ref+": " + totalPrice);
+        }
+
+    }
+
+
 }
