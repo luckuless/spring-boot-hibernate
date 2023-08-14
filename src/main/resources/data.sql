@@ -1,7 +1,7 @@
-insert into Driver ("PASSPORT_NO","FNAME","LNAME", "ADDRESS") values
-    ('muPass01', 'John', 'Doe', 'p.louis'),
-    ('muPass02', 'Jane', 'Doe', 'moka'),
-    ('bePass03', 'jean', 'claude', 'ixelles');
+insert into Driver ("PASSPORT_NO","FNAME","LNAME", "ADDRESS", "EMAIL") values
+    ('muPass01', 'John', 'Doe', 'p.louis','john.doe@gmail.com'),
+    ('muPass02', 'Jane', 'Doe', 'moka', 'jane.doe@gmail.com'),
+    ('bePass03', 'jean', 'claude', 'ixelles', 'jean.claude@gmail.com');
 
 insert into Driver_Profile values
     (1, true, true, 'muPass01'),

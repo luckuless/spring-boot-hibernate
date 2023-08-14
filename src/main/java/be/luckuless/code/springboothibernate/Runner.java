@@ -11,12 +11,14 @@ import be.luckuless.code.springboothibernate.repository.WheelRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
 @Component
+@Profile("dev")
 public class Runner implements CommandLineRunner {
     Logger logger = LoggerFactory.getLogger(Runner.class);
 

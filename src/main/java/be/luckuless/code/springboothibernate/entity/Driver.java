@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class Driver {
     @Id
     private String passportNo;
+    private String email;
     private String fname;
     private String lname;
     private String address;
