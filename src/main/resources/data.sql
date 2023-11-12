@@ -14,7 +14,7 @@ insert into Car ("REF", "VIN", "TYPE", "MODEL", "TRIM", "FUEL_TYPE", "DRIVER") v
     ( 'sedanHondaCivic1', 123452, 'Sedan', 'Honda', 'Civic', 'Petrol/Electric', 'muPass02'),
     ( 'crossVolkTiguan1', 123453, 'CROSSOVER', 'Volkswagen', 'Tiguan', 'Diesel', 'bePass03'),
     ( 'sedanHondaCivic2', 123454, 'Sedan', 'Honda', 'Civic', 'Petrol/Electric', NULL),
-    ( 'crossVolkTiguan2', 123455, 'CROSSOVER', 'Volkswagen', 'Tiguan', 'Diesel', NULL),
+    ( 'crossVolkTiguan2', 123455, 'CROSSOVER', 'Volkswagen', 'Tiguan', 'Diesel', 'bePass03'),
     ( '4x4NissanNavara1', 123456, '4X4', 'Nissan', 'Navara', 'Diesel', NULL);
 
 insert into Wheel("REF", "MODEL", "TYPE", "SIZE", "PRICE") values

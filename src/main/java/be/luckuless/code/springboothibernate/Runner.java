@@ -8,6 +8,9 @@ import be.luckuless.code.springboothibernate.repository.CarRepository;
 import be.luckuless.code.springboothibernate.repository.CarWheelRepository;
 import be.luckuless.code.springboothibernate.repository.DriverRepository;
 import be.luckuless.code.springboothibernate.repository.WheelRepository;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -18,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-@Profile("dev")
+@Profile("jpa")
 public class Runner implements CommandLineRunner {
     Logger logger = LoggerFactory.getLogger(Runner.class);
 
@@ -41,7 +44,10 @@ public class Runner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //        basicRepository();
         complexRepository();
+
+        criteriaBuilder();
     }
+
 
     private void basicRepository() {
 
@@ -66,6 +72,7 @@ public class Runner implements CommandLineRunner {
     private void complexRepository() {
         findWheelsUsedByCarRef("4x4NissanNavara1");
         findTotalWheelPriceByCarRef("4x4NissanNavara1");
+        findCarsByFuelTypeAndDriverSunroofPreference("Diesel", true);
     }
 
     private Optional<Car> findCarsByRef(String ref) {
@@ -97,6 +104,19 @@ public class Runner implements CommandLineRunner {
         }
 
     }
+
+    private void findCarsByFuelTypeAndDriverSunroofPreference(String fuelType, boolean sunroof) {
+        List<Car> cars = carRepository.findMyCarsByFulTypeAndDriverSunroof(fuelType, sunroof);
+        logger.info("findCarsByFuelTypeAndDriverSunroofPreference "+cars.size()+" found - fuel:" + fuelType +", sunroof: "+ sunroof);
+        cars.forEach(c -> logger.info(cars.toString()));
+    }
+
+    private void criteriaBuilder() {
+
+
+
+    }
+
 
 
 }
